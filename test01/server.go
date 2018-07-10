@@ -26,9 +26,11 @@ func startServer() {
 func doServerStuff(conn net.Conn) {
 	nameInfo := make([]byte, 512) //生成一个缓存数组
 	_, err := conn.Read(nameInfo)
+	println(string(nameInfo))
 	checkError(err)
 
 	for {
+		println("server loop test")
 		buf := make([]byte, 512)
 		_, err := conn.Read(buf) //读取客户机发的消息
 		flag := checkError(err)
